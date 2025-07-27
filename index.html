@@ -1,80 +1,724 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chat gpt mulu kapan bisanya? hehe</title>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Pribadi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --orange-primary: #FF6B35;
+            --orange-secondary: #F7931E;
+            --black-primary: #1A1A1A;
+            --red-primary: #C1272D;
+            --red-secondary: #E31E24;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(90deg, var(--orange-primary), var(--red-primary));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ffd8c5 !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--black-primary) 0%, #2c2c2c 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(255,107,53,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image {
+            border: 5px solid var(--orange-primary);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 30px 50px rgba(255,107,53,0.4);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: var(--black-primary);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange-primary), var(--red-primary));
+            border-radius: 2px;
+        }
+        
+        .about-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .skills-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .skills-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255,107,53,0.2);
+        }
+        
+        .skills-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--orange-primary), var(--red-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .projects-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .project-card {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(255,107,53,0.3);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 60%, rgba(0,0,0,0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--black-primary) 0%, #2c2c2c 100%);
+            color: white;
+        }
+        
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255,107,53,0.2);
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange-primary), var(--red-primary));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255,107,53,0.4);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--orange-primary), var(--red-primary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,53,0.4);
+        }
+        
+        .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: var(--orange-primary);
+            border-radius: 50%;
+            padding: 20px;
+        }
+        
+        .footer {
+            background-color: var(--black-primary);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--orange-primary), var(--red-primary));
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-slash me-2"></i>Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- Section 1: Menu -->
-<table border="1" width="100%">
-    <tr>
-        <td align="center"><b>Home</b></td>
-        <td align="center"><b>About</b></td>
-        <td align="center"><b>Portfolio</b></td>
-        <td align="center"><b>Contact</b></td>
-    </tr>
-</table>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="badge bg-danger mb-3">Web Developer</span>
+                    <h1 class="display-3 fw-bold mb-4">Pojaannin</h1>
+                    <p class="lead mb-4">Saya adalah seorang Web Developer Gabut dengan pengalaman dikit dalam menciptakan solusi digital yang inovatif dan menarik. Fokus pada kuantitas, uang, dan copy paste ai.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#projects" class="btn btn-primary">Lihat Project</a>
+                        <a href="#contact" class="btn btn-outline-light">Kontak Saya</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://i.pinimg.com/236x/63/9a/67/639a675b1ab4c1428a820d4be647a79a.jpg" alt="Profile" class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<br>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Tentang GW</h2>
+                    <p class="text-muted">Mengenal lebih jauh tentang Rawr ohio dan Mindset Gw</p>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Perjalanan Profesional Saya</h3>
+                    <p>Saya adalah seorang Web Developer dengan lebih dari 5 tahun pengalaman dalam industri teknologi. Spesialisasi saya mencakup pengembangan frontend dan backend dengan teknologi terkini.</p>
+                    <p>Komitmen saya adalah menciptakan solusi digital yang tidak hanya berfungsi dengan baik tetapi juga memberikan pengalaman pengguna yang luar biasa. Saya percaya bahwa teknologi harus membuat hidup lebih mudah dan menyenangkan.</p>
+                    <div class="mt-4">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <i class="bi bi-person me-2"></i>Lihat Profil Lengkap
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="skills-card p-4 text-center">
+                                <div class="skills-icon">
+                                    <i class="bi bi-code-slash"></i>
+                                </div>
+                                <h5>Frontend Development</h5>
+                                <p class="text-muted">HTML, CSS, JavaScript, React</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="skills-card p-4 text-center">
+                                <div class="skills-icon">
+                                    <i class="bi bi-server"></i>
+                                </div>
+                                <h5>Backend Development</h5>
+                                <p class="text-muted">Node.js, PHP, Database</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="skills-card p-4 text-center">
+                                <div class="skills-icon">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <h5>UI/UX Design</h5>
+                                <p class="text-muted">Figma, Adobe XD, Prototyping</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="skills-card p-4 text-center">
+                                <div class="skills-icon">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <h5>Digital Marketing</h5>
+                                <p class="text-muted">SEO, SEM, Social Media</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="mb-4">Keahlian Teknis</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>React</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>Database</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>UI/UX Design</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Section 2: Judul di kiri, Gambar di kanan -->
-<table border="1" width="100%">
-    <tr>
-        <td width="50%">
-            <h2>Halo, saya RAWRRRR</h2>
-            <p>Calon Web developer yg sigma alpha mewing</p>
-        </td>
-        <td width="50%" align="center">
-            <img src="https://i.pinimg.com/1200x/de/34/48/de3448ba75464d0bf102f0217d77d550.jpg" alt="Gambar Profil" width="600" height="400">
-        </td>
-    </tr>
-</table>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Project Saya</h2>
+                    <p class="text-muted">Kumpulan project terbaik yang telah saya kerjakan</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto mb-5">
+                    <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card project-card">
+                                            <div class="position-relative">
+                                                <img src="https://placehold.co/600x400/FF6B35/FFFFFF?text=E-Commerce+App" class="card-img-top project-img" alt="Project 1">
+                                                <div class="project-overlay d-flex align-items-end p-3">
+                                                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal1">Lihat Detail</button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">E-Commerce Platform</h5>
+                                                <p class="card-text">Platform jual beli online dengan fitur lengkap dan pengalaman pengguna yang optimal.</p>
+                                                <span class="badge bg-orange">React</span>
+                                                <span class="badge bg-danger">Node.js</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card project-card">
+                                            <div class="position-relative">
+                                                <img src="https://placehold.co/600x400/C1272D/FFFFFF?text=Dashboard+Admin" class="card-img-top project-img" alt="Project 2">
+                                                <div class="project-overlay d-flex align-items-end p-3">
+                                                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal2">Lihat Detail</button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Admin Dashboard</h5>
+                                                <p class="card-text">Dashboard administrasi dengan visualisasi data dan kontrol sistem yang lengkap.</p>
+                                                <span class="badge bg-orange">Vue.js</span>
+                                                <span class="badge bg-danger">Firebase</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card project-card">
+                                            <div class="position-relative">
+                                                <img src="https://placehold.co/600x400/F7931E/FFFFFF?text=Mobile+App" class="card-img-top project-img" alt="Project 3">
+                                                <div class="project-overlay d-flex align-items-end p-3">
+                                                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal3">Lihat Detail</button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Mobile Banking App</h5>
+                                                <p class="card-text">Aplikasi perbankan mobile dengan keamanan tinggi dan antarmuka yang intuitif.</p>
+                                                <span class="badge bg-orange">React Native</span>
+                                                <span class="badge bg-danger">API</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card project-card">
+                                            <div class="position-relative">
+                                                <img src="https://placehold.co/600x400/1A1A1A/FFFFFF?text=Portfolio+Website" class="card-img-top project-img" alt="Project 4">
+                                                <div class="project-overlay d-flex align-items-end p-3">
+                                                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal4">Lihat Detail</button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Creative Portfolio</h5>
+                                                <p class="card-text">Website portfolio kreatif dengan animasi dan desain yang menarik.</p>
+                                                <span class="badge bg-orange">HTML/CSS</span>
+                                                <span class="badge bg-danger">JavaScript</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <a href="#" class="btn btn-outline-primary">
+                        <i class="bi bi-folder2 me-2"></i>Lihat Semua Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<br>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title text-white">Kontak Saya</h2>
+                    <p>Mari bekerja sama dan ciptakan sesuatu yang luar biasa</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="contact-card p-4 text-center">
+                                <i class="bi bi-envelope-fill fs-1 mb-3"></i>
+                                <h5>Email</h5>
+                                <p>Pojaannin@portfolio.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="contact-card p-4 text-center">
+                                <i class="bi bi-telephone-fill fs-1 mb-3"></i>
+                                <h5>Telepon</h5>
+                                <p>Kepo lu</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="contact-card p-4 text-center">
+                                <i class="bi bi-geo-alt-fill fs-1 mb-3"></i>
+                                <h5>Lokasi</h5>
+                                <p>Bumi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h4 class="mb-4">Ikuti Saya di Media Sosial</h4>
+                    <div class="mb-4">
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                    <p>&copy; 2025 Pojaannin. Hak Cipta Dilindungi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Section 3: Biodata dengan 6 box -->
-<table border="1" width="100%">
-    <tr>
-        <td width="33%" align="center">
-            <p><b>Nama:</b><br>Rawrr</p>
-        </td>
-        <td width="33%" align="center">
-            <p><b>Education:</b><br>Siswa</p>
-        </td>
-        <td width="33%" align="center">
-            <p><b>Pekerjaan:</b><br>Web Developer Aamiin</p>
-        </td>
-    </tr>
-    <tr>
-        <td width="33%" align="center">
-        <p><b>Kontak aku~:</b><br>08 berapa?</p>
-        </td>
-        <td width="33%" align="center">
-            <p><b>Hobi:</b><br>Main komputer rawrr</p>
-        </td>
-        <td width="33%" align="center">
-            <p><b>Alamat:</b><br>Privasi bos!</p>
-        </td>
-    </tr>
-</table>
+    <!-- Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Profil Lengkap</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="https://placehold.co/300x300/FF6B35/FFFFFF?text=Foto+Profil" class="img-fluid rounded-circle mb-3" alt="Profile">
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Muhammad Rizki</h4>
+                            <p class="text-muted">Web Developer & UI/UX Designer</p>
+                            <p>Saya adalah seorang profesional di bidang pengembangan web dengan keahlian dalam menciptakan solusi digital yang inovatif dan efisien. Dengan pengalaman lebih dari 5 tahun, saya telah membantu berbagai klien mencapai tujuan bisnis mereka melalui teknologi.</p>
+                            <div class="mt-4">
+                                <h6>Pengalaman Kerja:</h6>
+                                <ul>
+                                    <li>Senior Web Developer - Tech Solutions (2020-Present)</li>
+                                    <li>Frontend Developer - Digital Agency (2018-2020)</li>
+                                    <li>Junior Developer - Startup Inc (2016-2018)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<br>
+    <!-- Project Modals -->
+    <div class="modal fade" id="projectModal1" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">E-Commerce Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://placehold.co/600x400/FF6B35/FFFFFF?text=E-Commerce+App" class="img-fluid mb-3" alt="Project">
+                    <p>Platform e-commerce lengkap dengan fitur manajemen produk, keranjang belanja, sistem pembayaran, dan dashboard admin. Dibangun dengan React untuk frontend dan Node.js untuk backend.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-orange">React</span>
+                        <span class="badge bg-danger">Node.js</span>
+                        <span class="badge bg-dark">MongoDB</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Section 4: Portfolio -->
-<table border="1" width="100%">
-    <tr>
-        <th colspan="2">Portfolio Project</th>
-    </tr>
-    <tr>
-        <td> <img src="image.png" width="350" height="200"><b>Proyek 1</b><br>Cuman bisa promt bukan ngoding RAWRRRR</td>
-        <td><img src="rawr.png" width="350" height="200"><b>proyek 2</b><br>Landing page produk</td>
-    </tr>
-    <tr>
-        <td><img src="apapu .png" width="350" height="200"><b>proyek 3 </b><br>Mini game di Unreal</td>
-    </tr>
-</table>
+    <div class="modal fade" id="projectModal2" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Dashboard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://placehold.co/600x400/C1272D/FFFFFF?text=Dashboard+Admin" class="img-fluid mb-3" alt="Project">
+                    <p>Dashboard administrasi dengan visualisasi data real-time, manajemen pengguna, dan kontrol sistem yang lengkap. Menggunakan Vue.js dan Firebase untuk pengembangan yang cepat dan skalabel.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-orange">Vue.js</span>
+                        <span class="badge bg-danger">Firebase</span>
+                        <span class="badge bg-dark">Chart.js</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="projectModal3" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mobile Banking App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://placehold.co/600x400/F7931E/FFFFFF?text=Mobile+App" class="img-fluid mb-3" alt="Project">
+                    <p>Aplikasi perbankan mobile dengan fitur transfer, pembayaran tagihan, dan manajemen keuangan pribadi. Dibangun dengan React Native untuk kompatibilitas cross-platform dan keamanan tinggi.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-orange">React Native</span>
+                        <span class="badge bg-danger">API Security</span>
+                        <span class="badge bg-dark">Redux</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectModal4" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Creative Portfolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://placehold.co/600x400/1A1A1A/FFFFFF?text=Portfolio+Website" class="img-fluid mb-3" alt="Project">
+                    <p>Website portfolio kreatif dengan animasi interaktif, desain responsif, dan pengalaman pengguna yang luar biasa. Menggunakan teknologi modern untuk menciptakan tampilan yang menarik dan fungsional.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-orange">HTML/CSS</span>
+                        <span class="badge bg-danger">JavaScript</span>
+                        <span class="badge bg-dark">GSAP</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
